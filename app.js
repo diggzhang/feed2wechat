@@ -16,6 +16,33 @@ var feed = require('feed-read');
 // api(corpid, secret, product_id)
 var api = new API(config.corpid, config.corpsecret, 10);
 
+// message send configure
+// send to @all(alluser)
+var to = {
+    "touser": "@all"
+}
+// send message format
+var message = {
+    "msgtype" : "news",
+    "news" : {
+        "articles" : [
+            {
+                "title":"Title",
+                "description":"Description",
+                "url":"URL",
+                "picurl":"http://i-store.qiniudn.com/RSbgrLMmjaDOieNPufTw.png"
+            },  
+            {   
+                "title":"Title",
+                "description":"Description",
+                "url":"URL",
+                "picurl":"http://i-store.qiniudn.com/eaTwVWYUMlKFmufkynXh.png"
+            }   
+        ]   
+    },  
+    "safe" : "0" 
+};
+
 var app = express();
 
 // view engine setup
