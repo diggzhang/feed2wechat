@@ -13,7 +13,7 @@ var users = require('./routes/users');
 var config = require('./config');
 var API = require('wechat-enterprise-api');
 var feed = require('feed-read');
-// api(corpid, secret, product_id)
+//api(corpid, secret, product_id)
 var api = new API(config.corpid, config.corpsecret, 10);
 
 // message send configure
@@ -45,10 +45,18 @@ var message = {
 
 // feed list
 feedList = [
-    "http://dev.guanghe.tv/feed.xml"
+    "http://dev.guanghe.tv/feed.xml",
+    "https://github.com/blog.atom"
 ];
 
 var app = express();
+
+// wechat api.send
+api.send(to, message, function (err, data, res) {
+    if (err) {
+        console.log(err);
+    };
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
