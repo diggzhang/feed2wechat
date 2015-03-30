@@ -8,6 +8,12 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+// author diggzhang@
+// require into config.js / wechat-enterprise-api / feed-read
+var config = require('./config');
+var API = require('wechat-enterprise-api');
+var feed = require('feed-read');
+
 var app = express();
 
 // view engine setup
