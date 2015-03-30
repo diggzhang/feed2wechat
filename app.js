@@ -43,6 +43,11 @@ var message = {
     "safe" : "0" 
 };
 
+// feed list
+feedList = [
+    "http://dev.guanghe.tv/feed.xml"
+];
+
 var app = express();
 
 // view engine setup
