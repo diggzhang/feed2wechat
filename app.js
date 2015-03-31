@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var config = require('./config');
 var API = require('wechat-enterprise-api');
 var feed = require('feed-read');
+var mongoose = require('mongoose');
 //api(corpid, secret, product_id)
 var api = new API(config.corpid, config.corpsecret, 10);
 
