@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-// author diggzhang@
 // require into config.js / wechat-enterprise-api / feed-read
 var config = require('./config');
 var API = require('wechat-enterprise-api');
@@ -49,6 +48,26 @@ feedList = [
     "https://github.com/blog.atom"
 ];
 
+// feed-read in feed-read>>>strore in DB>>>if(!push)push else findnext
+feed(feedList, function (err, articles) {
+    if (err) {
+        throw err;
+    };
+    
+    // catch title/link/content/.. to message 
+    message.news.articles[0].title = articles[0].title;
+    message.news.articles[0].url   = articles[0].link;
+    console.log(articles[0].link);
+    api.send(to, message, function (err, data, res) {
+        if (err) {
+            console.log(err);
+        };
+        console.log(" feed Already Push");
+    });
+
+
+});
+
 var app = express();
 
 // wechat api.send
@@ -56,6 +75,7 @@ api.send(to, message, function (err, data, res) {
     if (err) {
         console.log(err);
     };
+    console.log("Already Push");
 });
 
 // view engine setup
