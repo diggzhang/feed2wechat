@@ -44,7 +44,7 @@ var message = {
 
 // feed list
 feedList = [
-    "http://dev.guanghe.tv/feed.xml",
+//    "http://dev.guanghe.tv/feed.xml",
     "https://github.com/blog.atom"
 ];
 
@@ -55,9 +55,15 @@ feed(feedList, function (err, articles) {
     };
     
     // catch title/link/content/.. to message 
+    // article #1
     message.news.articles[0].title = articles[0].title;
     message.news.articles[0].url   = articles[0].link;
     console.log(articles[0].link);
+    // article #2
+    message.news.articles[1].title = articles[1].title;
+    message.news.articles[1].url   = articles[1].link;
+    console.log(articles[1].link);
+
     api.send(to, message, function (err, data, res) {
         if (err) {
             console.log(err);
@@ -71,12 +77,12 @@ feed(feedList, function (err, articles) {
 var app = express();
 
 // wechat api.send
-api.send(to, message, function (err, data, res) {
-    if (err) {
-        console.log(err);
-    };
-    console.log("Already Push");
-});
+//api.send(to, message, function (err, data, res) {
+//    if (err) {
+//        console.log(err);
+//    };
+//    console.log("Already Push");
+//});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
